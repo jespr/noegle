@@ -29,8 +29,8 @@ defmodule Noegle.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:comeonin, "~> 2.3"},
-      {:ecto, "~> 2.0.0-rc"},
+      {:comeonin, "~> 3.0"},
+      {:ecto, "~> 2.1"},
       {:postgrex, ">= 0.0.0", only: :test},
     ]
   end
