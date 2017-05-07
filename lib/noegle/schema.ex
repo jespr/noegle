@@ -44,7 +44,7 @@ defmodule Noegle.Schema do
     end
   """
 
-  defmacro __using__(opts \\ []) do
+  defmacro __using__(_opts \\ []) do
     quote do
       import unquote(__MODULE__)
       import Ecto.Changeset
