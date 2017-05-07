@@ -11,6 +11,7 @@ defmodule Noegle.Schema do
   The following functions are available:
 
   * `hash_password/1` - hashes a password string using `Comeonin.Bcrypt.hashpwsalt`
+  * `valid_password?/2` - checks that a clear text `password` matches the `hashed_password`
 
   ## Examples
 
@@ -61,6 +62,19 @@ defmodule Noegle.Schema do
           |> put_change(:password_digest, hashpwsalt(password))
         else
           changeset
+        end
+      end
+
+      @doc """
+      Takes a clear text `password` and matches it against `hashed_password`
+
+      Returns true/false
+      """
+      def valid_password?(password, hashed_password) do
+        try do
+          Comeonin.Bcrypt.checkpw(password, hashed_password)
+        rescue
+          _ -> false
         end
       end
     end

@@ -28,4 +28,16 @@ defmodule NogleTest.Schema do
     changeset = User.changeset(%User{}, %{email: @email, password: nil, password_confirmation: nil})
     refute Ecto.Changeset.get_change(changeset, :password_digest)
   end
+
+  describe "valid_password?" do
+    test "returns true if the clear text password matches the given hashed password" do
+      changeset = User.changeset(%User{}, %{email: @email, password: @password, password_confirmation: @password})
+      assert User.valid_password?(@password, Ecto.Changeset.get_change(changeset, :password_digest))
+    end
+
+    test "returns false if the clear text password doesn't match the given hashed password" do
+      changeset = User.changeset(%User{}, %{email: @email, password: @password, password_confirmation: @password})
+      refute User.valid_password?("somethingnotpassword", Ecto.Changeset.get_change(changeset, :password_digest))
+    end
+  end
 end
