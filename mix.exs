@@ -7,7 +7,11 @@ defmodule Noegle.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     description: description(),
+     deps: deps(),
+     name: "Noegle",
+     source_url: "https://github.com/jespr/noegle",
+   ]
   end
 
   # Configuration for the OTP application
@@ -33,5 +37,11 @@ defmodule Noegle.Mixfile do
       {:ecto, "~> 2.1"},
       {:postgrex, ">= 0.0.0", only: :test},
     ]
+  end
+
+  defp description do
+    """
+    The goal is to make password authentication a little easier when building a new Elixir/Phoenix application.
+    """
   end
 end
