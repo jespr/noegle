@@ -9,6 +9,7 @@ defmodule Noegle.Mixfile do
      start_permanent: Mix.env == :prod,
      description: description(),
      deps: deps(),
+     package: package(),
      name: "Noegle",
      source_url: "https://github.com/jespr/noegle",
    ]
@@ -45,5 +46,14 @@ defmodule Noegle.Mixfile do
     """
     The goal is to make password authentication a little easier when building a new Elixir/Phoenix application.
     """
+  end
+
+  defp package do
+    [
+      name: :noegle,
+      maintainers: ["Jesper Christiansen"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/jespr/noegle"}
+    ]
   end
 end
