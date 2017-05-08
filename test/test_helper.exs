@@ -3,6 +3,7 @@ ExUnit.start()
 Code.require_file "./support/schema.exs", __DIR__
 Code.require_file "./support/repo.exs", __DIR__
 Code.require_file "./support/migrations.exs", __DIR__
+Code.require_file "./support/conn_case.exs", __DIR__
 
 defmodule Coherence.RepoSetup do
   use ExUnit.CaseTemplate
