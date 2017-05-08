@@ -22,4 +22,11 @@ defmodule NoegleExampleApp.SessionController do
       |> render("new.html")
     end
   end
+
+  def delete(conn, _) do
+    conn
+    |> logout()
+    |> put_flash(:notice, "Logged out!")
+    |> redirect(to: "/")
+  end
 end

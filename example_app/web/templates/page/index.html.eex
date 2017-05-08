@@ -32,7 +32,5 @@
         <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
       </li>
     </ul>
-
-    <%= IO.inspect @conn %>
   </div>
 </div>

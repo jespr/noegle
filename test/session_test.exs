@@ -33,4 +33,14 @@ defmodule Noegle.SessionTest do
     assert Plug.Conn.get_session(conn(), :user_id) == nil
     refute Session.current_user(conn())
   end
+
+  test "logged_in returns true if conn.assigns.current_user is set" do
+    conn = Plug.Conn.assign(conn, :current_user, %{id: 42})
+    assert Session.logged_in?(conn)
+  end
+
+  test "logged_in returns false if conn.assigns.current_user isn't set" do
+    refute conn.assigns[:current_user]
+    refute Session.logged_in?(conn)
+  end
 end
