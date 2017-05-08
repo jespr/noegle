@@ -25,7 +25,8 @@ config :logger, :console,
 
 config :noegle,
   repo: NoegleExampleApp.Repo,
-  user: NoegleExampleApp.User
+  user: NoegleExampleApp.User,
+  login_path: "/sessions/new"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

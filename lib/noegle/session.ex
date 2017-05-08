@@ -1,6 +1,4 @@
 defmodule Noegle.Session do
-  import Plug.Conn
-
   @session_key :user_id
 
   @moduledoc """
