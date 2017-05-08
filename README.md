@@ -14,7 +14,10 @@ it correctly.
 ```elixir
 config :noegle,
   repo: NoegleExampleApp.Repo,
-  user: NoegleExampleApp.User
+  user: NoegleExampleApp.User,
+  # The path a user will be redirected to if they access 
+  # a page that requires login
+  login_path: "/sessions/new",
 ```
 
 ## Scenarios
