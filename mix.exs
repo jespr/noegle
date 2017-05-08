@@ -35,6 +35,7 @@ defmodule Noegle.Mixfile do
     [
       {:comeonin, "~> 3.0"},
       {:ecto, "~> 2.1"},
+      {:plug, "~> 1.0"},
       {:postgrex, ">= 0.0.0", only: :test},
     ]
   end
