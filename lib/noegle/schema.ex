@@ -4,9 +4,11 @@ defmodule Noegle.Schema do
 
   Example:
 
+  ```elixir
     defmodule MyApp.User do
       use MyApp.Web, :model
       use Noegle.Schema
+  ```
 
   The following functions are available:
 
@@ -17,6 +19,7 @@ defmodule Noegle.Schema do
 
   The following is a full example of what is required to use Noegle for your authentication
 
+  ```elixir
   defmodule MyApp.Noegle do
     use MyApp.Web, :model
     use Noegle.Schema
@@ -43,6 +46,7 @@ defmodule Noegle.Schema do
       |> validate_confirmation(:password)
       |> hash_password() # Function that comes from Noegle which hashes the password
     end
+    ```
   """
 
   defmacro __using__(_opts \\ []) do

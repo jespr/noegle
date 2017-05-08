@@ -37,6 +37,7 @@ defmodule Noegle.Mixfile do
       {:ecto, "~> 2.1"},
       {:plug, "~> 1.0"},
       {:postgrex, ">= 0.0.0", only: :test},
+      {:ex_doc, ">= 0.0.0", only: :dev},
     ]
   end
 
