@@ -8,8 +8,9 @@ authentication to your Elixir Plug based application.
 
 ## Configuration
 
-Specify the name of your repo and user module, so Nøgle knows how to reference
-it correctly.
+You can insert the default configuration into `config/config.exs` by using our
+config generator by running `mix noegle.generate.config` which will insert the
+following:
 
 ```elixir
 config :noegle,
