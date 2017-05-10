@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Noegle.GenerateBoilerplate do
+defmodule Mix.Tasks.Noegle.Generate.Boilerplate do
   use Mix.Task
   import Mix.Generator
 
@@ -76,7 +76,7 @@ defmodule Mix.Tasks.Noegle.GenerateBoilerplate do
 
     Mix.shell.info "Done creating boilerplate files!"
 
-    Mix.shell.info()
+    Mix.shell.info("")
 
     Mix.shell.info """
     Add the following to web/router.ex:
