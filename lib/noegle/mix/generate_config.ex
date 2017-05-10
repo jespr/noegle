@@ -63,7 +63,7 @@ defmodule Mix.Tasks.Noegle.Generate.Config do
     config :noegle,
       repo: #{repo},
       user: #{user},
-      login_path: "#{login_path}",
+      login_path: "#{login_path}"
     """
   end
 
