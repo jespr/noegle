@@ -16,10 +16,18 @@ following:
 config :noegle,
   repo: NoegleExampleApp.Repo,
   user: NoegleExampleApp.User,
-  # The path a user will be redirected to if they access 
+  # The path a user will be redirected to if they access
   # a page that requires login
   login_path: "/sessions/new",
 ```
+
+## Boilerplate
+
+We provide some basic boilerplate which consists of controllers, views and templates.
+These can be generated and used as a foundation for your app.
+
+Run the following command to generate these:
+`mix noegle.generate.boilerplate`
 
 ## Scenarios
 
