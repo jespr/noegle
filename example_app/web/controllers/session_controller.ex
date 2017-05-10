@@ -9,17 +9,17 @@ defmodule NoegleExampleApp.SessionController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"user" => %{"email" => email, "password" => password}}) do
-    user = Repo.get_by!(User, email: email)
-    if User.valid_password?(password, user.password_digest) do
+  def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
+    user = Repo.get_by(User, email: email)
+    if user != nil && User.valid_password?(password, user.password_digest) do
       conn
-      |> authenticate(user)
+      |> Noegle.Session.authenticate(user)
       |> put_flash(:notice, "Logged in!")
       |> redirect(to: "/")
     else
       conn
       |> put_flash(:error, "Couldn't log you in")
-      |> render("new.html")
+      |> render("new.html", [{:email, email}])
     end
   end
 
