@@ -1,12 +1,10 @@
-defmodule NoegleExampleApp.SessionController do
-  use NoegleExampleApp.Web, :controller
-  import Noegle.Session
+defmodule BaseApp.Noegle.SessionController do
+  use BaseApp.Web, :controller
+  alias BaseApp.User
 
-  alias NoegleExampleApp.User
-
-  def new(conn, _params) do
+  def new(conn, _) do
     changeset = User.changeset(%User{})
-    render(conn, "new.html", changeset: changeset)
+    render conn, "new.html", changeset: changeset
   end
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
@@ -25,7 +23,7 @@ defmodule NoegleExampleApp.SessionController do
 
   def delete(conn, _) do
     conn
-    |> logout()
+    |> Noegle.Session.logout()
     |> put_flash(:notice, "Logged out!")
     |> redirect(to: "/")
   end

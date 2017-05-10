@@ -30,7 +30,8 @@ defmodule NoegleExampleApp.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
-    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/registration", Noegle.RegistrationController, only: [:new, :create]
+    resources "/session", Noegle.SessionController, only: [:new, :create, :delete]
   end
 
   scope "/", NoegleExampleApp do
