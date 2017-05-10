@@ -15,7 +15,7 @@ defmodule BaseApp.Noegle.RegistrationController do
       {:ok, _user} ->
         conn
         |> put_flash(:info, "Successfully signed up!")
-        |> redirect(to: user_path(conn, :index))
+        |> redirect(to: registration_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
