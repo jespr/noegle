@@ -5,7 +5,7 @@ defmodule Noegle.Session do
   This module contains convenience methods for setting and retrieving things from the session
 
   ## Examples:
-  
+
   * `authenticate/2` - sets the `user_id` on the session
   * `current_user/1` - returns the currently logged in user
   * `logged_in/1` - returns true if the user is logged in
@@ -13,7 +13,7 @@ defmodule Noegle.Session do
 
   @doc """
   Sets the `user_id` on the session
-  
+
   Returns conn
   """
   def authenticate(conn, user) do
