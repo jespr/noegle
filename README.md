@@ -29,14 +29,59 @@ These can be generated and used as a foundation for your app.
 Run the following command to generate these:
 `mix noegle.generate.boilerplate`
 
+## Routes
+
+To make `current_user` available in `conn.assigns`, make sure to add `plug Noegle.Plug.CurrentUser` in your routes file:
+
+```elixir
+defmodule MyApp.Router do
+  use MyApp.Web, :router
+
+  pipeline :browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug Noegle.Plug.CurrentUser
+  end
+
+  ...
+````
+
+To make sure a route can't be accessed without logging in use `plug Noegle.Plug.RequireAuth`:
+
+```elixir
+defmodule MyApp.Router do
+  use MyApp.Web, :router
+
+  pipeline :protected do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug Noegle.Plug.CurrentUser
+    plug Noegle.Plug.RequireAuth
+  end
+
+  scope "/", MyApp do
+    pipe_through :protected
+    get "/secrets", SecretController, :index
+  end
+
+  ...
+```
+
 ## Scenarios
 
 ### Create user
 
 You add `password` and `password_confirmation` as virtual fields to your model
-as well as `password_digest` to your database. You can then use
+as well as `password_digest` in your model and database. You can then use
 `hash_password()` in your `changeset` to ensure the password is persisted in a
-hashed format
+hashed format (remember to have `password` and `password_confirmation` as part
+of `cast(...)`.
 
 ```elixir
 defmodule NoegleExampleApp.User do
