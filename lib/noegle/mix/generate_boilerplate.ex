@@ -81,8 +81,8 @@ defmodule Mix.Tasks.Noegle.GenerateBoilerplate do
     Mix.shell.info """
     Add the following to web/router.ex:
 
-      resources "/registration", Noegle.RegistrationController, only: [:new, :create]
-      resources "/session", Noegle.SessionController, only: [:new, :create, :delete]
+      resources "/registrations", Noegle.RegistrationController, only: [:new, :create]
+      resources "/sessions", Noegle.SessionController, only: [:new, :create, :delete]
     """
   end
 
