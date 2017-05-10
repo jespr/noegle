@@ -27,7 +27,10 @@ defmodule Mix.Tasks.Noegle.Generate.Config do
       Mix.shell.info(config)
     else
 
-      Mix.shell.info "Adding Noegle configuration to #{config_path}"
+      Mix.shell.info "Adding configuration to #{config_path}"
+      Mix.shell.info("")
+      Mix.shell.info "Config:"
+      Mix.shell.info config
 
       add_config(config_path, config)
     end
