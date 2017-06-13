@@ -1,4 +1,5 @@
 defmodule Noegle.Session do
+  alias Plug.Conn
   @session_key :user_id
 
   @moduledoc """
@@ -17,7 +18,8 @@ defmodule Noegle.Session do
   Returns conn
   """
   def authenticate(conn, user) do
-    Plug.Conn.put_session(conn, @session_key, user.id)
+    Conn.assign conn, :current_user, user
+    Conn.put_session(conn, @session_key, user.id)
   end
 
   @doc """
