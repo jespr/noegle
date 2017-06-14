@@ -14,8 +14,6 @@ defmodule Noegle.Trackable do
   def track_login(conn, user) do
     repo = Application.get_env(:noegle, :repo)
     user_module = Application.get_env(:noegle, :user)
-    IO.inspect repo
-    IO.inspect user_module
     ip = conn.peer |> elem(0) |> inspect
 
     changeset = user_module.changeset(user,
