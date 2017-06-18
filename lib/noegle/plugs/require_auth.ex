@@ -8,6 +8,7 @@ defmodule Noegle.Plug.RequireAuth do
       conn
     else
       conn
+      |> Noegle.Session.store_return_to()
       |> Phoenix.Controller.redirect(to: Application.get_env(:noegle, :login_path) || "/sessions/new")
       |> halt
     end

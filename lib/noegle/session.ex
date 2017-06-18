@@ -1,6 +1,7 @@
 defmodule Noegle.Session do
   alias Plug.Conn
   @session_key :user_id
+  @return_to_key :return_to
 
   @moduledoc """
   This module contains convenience methods for setting and retrieving things from the session
@@ -20,6 +21,18 @@ defmodule Noegle.Session do
   def authenticate(conn, user) do
     Conn.assign conn, :current_user, user
     Conn.put_session(conn, @session_key, user.id)
+
+  end
+
+  def return_to_url(conn) do
+    return_to_url = case Conn.get_session(conn, @return_to_key) do
+      nil -> "/"
+      value -> value
+    end
+
+    Conn.put_session(conn, @return_to_key, nil)
+
+    return_to_url
   end
 
   @doc """
@@ -28,7 +41,9 @@ defmodule Noegle.Session do
   Returns conn
   """
   def logout(conn) do
-    Plug.Conn.delete_session(conn, @session_key)
+    conn
+    |> Plug.Conn.delete_session(@session_key)
+    |> Plug.Conn.delete_session(@return_to_key)
   end
 
   @doc """
@@ -56,5 +71,10 @@ defmodule Noegle.Session do
   """
   def logged_in?(conn) do
     conn.assigns[:current_user] != nil
+  end
+
+  def store_return_to(conn) do
+    return_to = Path.join(["/" | conn.path_info])
+    Conn.put_session(conn, @return_to_key, return_to)
   end
 end
